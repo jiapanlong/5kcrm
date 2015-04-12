@@ -9,7 +9,7 @@
 		  <li><a href="{:U('contacts/index')}"><img src="__PUBLIC__/img/contacts_icon.png"/> &nbsp;{:L('LINKMAN')}</a></li>
 		  <li><a href="{:U('customer/cares')}"><img src="__PUBLIC__/img/cares_icon.png"/> &nbsp;{:L('CUMTOMER_CARE')}</a></li>
 		  <li><a href="{:U('customer/analytics')}"><img src="__PUBLIC__/img/tongji.png"/> &nbsp;{:L('CLIENT_STATISTICS')}</a></li>
-		  <li><a href="http://5kcrm.com/index.php?m=doc&a=index&id=27" target="_blank" style="font-size: 12px;color: rgb(255, 102, 0);"><img width="20px;" src="__PUBLIC__/img/help.png"/> {:L('HELP')}</a></li>
+		  <li><a href="#" target="_blank" style="font-size: 12px;color: rgb(255, 102, 0);"><img width="20px;" src="__PUBLIC__/img/help.png"/> {:L('HELP')}</a></li>
 		</ul>
 	</div>
 	<include file="Public:alert" />
@@ -18,6 +18,7 @@
 		<b>{:L('UNIFIED_CUSTOMER_VIEW')}</b>
 		<img src=" __PUBLIC__/img/by_owner.png"/> <a href="{:U('customer/index')}" <if condition="$Think.get.by eq null">class="active"</if>>{:L('ALL')}</a> |
 		<a href="{:U('customer/index','by=me')}" <if condition="$Think.get.by eq 'me'">class="active"</if>>{:L('MY_CLIENTS')}</a> | 
+		<a href="{:U('customer/index','by=group')}" <if condition="$Think.get.by eq 'group'">class="active"</if>>{:L('GROUP_CLIENTS')}</a> | 
 		<a href="{:U('customer/index','by=sub')}" <if condition="$Think.get.by eq 'sub'">class="active"</if>>{:L('SUBORDINATES_TO_THE_CUSTOMER')}</a> &nbsp;  &nbsp; 
 		<img src="__PUBLIC__/img/by_time.png"/> 
 		<a href="{:U('customer/index','by=today')}" <if condition="$Think.get.by eq 'today'">class="active"</if>>{:L('TODAY_IS_NEW')}</a> | 

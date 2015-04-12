@@ -292,6 +292,26 @@ function getSubPositionTreeCode($position_id, $first=0,  $type=1) {
 	return $string;
 }
 
+function getSameRoleId(){
+	$my_role = M('role') -> where('role_id =  %d', session('role_id'))->find(); 
+	$my_position = M('position') -> where('position_id= %d', $my_role['position_id'])->find();
+	
+	$group_positions = M('position') ->where('department_id = %d', $my_position['department_id']) ->select();
+	
+	$position_ids = array();
+	foreach ($group_positions as $key=>$value) {
+		$position_ids[] = $value['position_id'];
+	}
+	$map['position_id']  = array('in',$position_ids);
+	$all_role = M('role')->where($map)->select();
+	$group_ids = array();
+	
+	foreach ($all_role as $key=>$value) {
+		$group_ids[] = $value['role_id'];
+	}
+	
+	return $group_ids;
+}
 function getSubRoleId($self = true){
 	$all_role = M('role')->where('user_id <> 0')->select();
 	$below_role = getSubRole(session('role_id'), $all_role);

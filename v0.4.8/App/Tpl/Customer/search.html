@@ -18,6 +18,7 @@
 		<b>{:L('UNIFIED_CUSTOMER_VIEW')}</b>
 		<img src=" __PUBLIC__/img/by_owner.png"/> <a href="{:U('customer/index')}" <if condition="$Think.get.by eq null">class="active"</if>>{:L('ALL')}</a> |
 		<a href="{:U('customer/index','by=me')}" <if condition="$Think.get.by eq 'me'">class="active"</if>>{:L('MY_CLIENTS')}</a> | 
+		<a href="{:U('customer/index','by=group')}" <if condition="$Think.get.by eq 'group'">class="active"</if>>{:L('GROUP_CLIENTS')}</a> | 
 		<a href="{:U('customer/index','by=sub')}" <if condition="$Think.get.by eq 'sub'">class="active"</if>>{:L('SUBORDINATES_TO_THE_CUSTOMER')}</a> &nbsp;  &nbsp; 
 		<img src="__PUBLIC__/img/by_time.png"/> 
 		<a href="{:U('customer/index','by=today')}" <if condition="$Think.get.by eq 'today'">class="active"</if>>{:L('TODAY_IS_NEW')}</a> | 

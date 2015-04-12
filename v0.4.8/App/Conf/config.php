@@ -18,7 +18,7 @@ return array(
     'VAR_LANGUAGE' => '1',
     'COOKIE_PATH' => __ROOT__,
     'SESSION_OPTIONS'=>array('cookie_path'=>__ROOT__),
-    'APP_URL'=>'http://crm.yunyou.in',
+    'APP_URL'=>'http://192.168.1.6/',
 	'TOKEN_ON'=>false  // 是否开启令牌验证
 );
 ?>

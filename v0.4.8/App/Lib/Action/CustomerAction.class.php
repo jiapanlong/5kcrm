@@ -280,6 +280,7 @@ class CustomerAction extends Action {
 		$d_v_customer = D('CustomerView');
         $by = isset($_GET['by']) ? trim($_GET['by']) : '';
 		$below_ids = getSubRoleId(false);
+		$gorup_ids = getSameRoleId();
 		$all_ids = getSubRoleId();
 		$outdays = M('config') -> where('name="customer_outdays"')->getField('value');
 		$outdate = empty($outdays) ? time() : time()-86400*$outdays;
@@ -295,6 +296,7 @@ class CustomerAction extends Action {
 			case 'sub' : $where['owner_role_id'] = array('in',implode(',', $below_ids)); break;
 			case 'deleted' : $where['is_deleted'] = 1;break;
 			case 'me' : $where['owner_role_id'] = session('role_id'); break;
+			case 'group' : $where['owner_role_id'] = array('in',implode(',', $gorup_ids)); break;
 			default :
 		        if($this->_get('content') == 'resource'){
 		            $where['_string'] = "customer.owner_role_id=0 or customer.update_time < $outdate";
@@ -786,6 +788,7 @@ class CustomerAction extends Action {
 		$d_v_customer = D('CustomerView');
         $by = isset($_GET['by']) ? trim($_GET['by']) : '';
 		$below_ids = getSubRoleId(false);
+		$gorup_ids = getSameRoleId();
 		$all_ids = getSubRoleId();
 		$outdays = M('config') -> where('name="customer_outdays"')->getField('value');
 		$outdate = empty($outdays) ? time() : time()-86400*$outdays;	
@@ -808,6 +811,7 @@ class CustomerAction extends Action {
 			case 'sub' : $where['owner_role_id'] = array('in',implode(',', $below_ids)); break;
 			case 'deleted' : $where['is_deleted'] = 1;break;
 			case 'me' : $where['owner_role_id'] = session('role_id'); break;
+			case 'group' : $where['owner_role_id'] = array('in',implode(',', $gorup_ids)); break;
 			default :
 				if($this->_get('content') == 'resource'){
 		            $where['_string'] = "customer.owner_role_id=0 or customer.update_time < $outdate";
@@ -1483,6 +1487,7 @@ class CustomerAction extends Action {
 	public function cares(){
 		$m_cares = M('CustomerCares');
 		$below_ids = getSubRoleId(false); 
+		$gorup_ids = getSameRoleId();
 		$all_ids = getSubRoleId();
 		$by = isset($_GET['by']) ? trim($_GET['by']) : '';
 		$where = array();
@@ -1498,6 +1503,7 @@ class CustomerAction extends Action {
 		
 		switch ($by) {
 			case 'me' : $where['owner_role_id'] = session('role_id'); break;
+			case 'group' : $where['owner_role_id'] = array('in',implode(',', $gorup_ids)); break;
 			case 'sub' : $where['owner_role_id'] = array('in',implode(',', $below_ids)); break;
 			case 'today' :
 				$where['care_time'] = array('between',array(strtotime(date('Y-m-d')) -1 ,strtotime(date('Y-m-d')) + 86400));
